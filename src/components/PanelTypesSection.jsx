@@ -22,7 +22,7 @@ const panelTypes = [
   },
 ];
 
-const PanelTypesSection = () => {
+const PanelTypesSection = ({ searchQuery }) => {
   const [show, setShow] = useState(false);
   const [selectedPanel, setSelectedPanel] = useState(null);
 
@@ -36,11 +36,17 @@ const PanelTypesSection = () => {
     setSelectedPanel(null);
   };
 
+  const filteredPanels = panelTypes.filter(
+    (panel) =>
+      panel.type.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      panel.description.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
     <div id="panel-types" className="container my-5">
       <h2 className="text-center mb-4">Types of Solar Panels</h2>
       <div className="row">
-        {panelTypes.map((panel, index) => (
+        {filteredPanels.map((panel, index) => (
           <div key={index} className="col-md-4">
             <div className="card shadow-sm">
               <img

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useState, useContext } from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import AuthContextProvider, { AuthContext } from "./context/AuthContext";
 import Header from "./components/Header";
@@ -16,18 +16,20 @@ const PrivateRoute = ({ children }) => {
 };
 
 const App = () => {
+  const [searchQuery, setSearchQuery] = useState("");  // Agregar el estado de búsqueda
+
   return (
     <AuthContextProvider>
       <Router>
-        <Header />
+        <Header searchQuery={searchQuery} setSearchQuery={setSearchQuery} /> {/* Pasar las props de búsqueda al Header */}
         <Routes>
           <Route
             path="/"
             element={
               <div>
                 <Image />
-                <InfoSection />
-                <PanelTypesSection />
+                <InfoSection searchQuery={searchQuery} /> {/* Pasar la búsqueda al InfoSection */}
+                <PanelTypesSection searchQuery={searchQuery} /> {/* Pasar la búsqueda al PanelTypesSection */}
                 <Footer />
               </div>
             }

@@ -1,13 +1,12 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 
-const Header = () => {
+const Header = ({ searchQuery, setSearchQuery }) => {
   const { user, logout } = useContext(AuthContext);
-  const [searchQuery, setSearchQuery] = useState("");
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
       <div className="container">
         <Link className="navbar-brand" to="/">
           <img

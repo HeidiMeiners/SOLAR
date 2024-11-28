@@ -10,7 +10,7 @@ const LearnMorePage = () => {
   const [paneles, setPaneles] = useState("");
   const [climaCalculado, setClimaCalculado] = useState(false);
 
-  const API_KEY = "a1e499dae2e276e67f92c10856b18ac3"; // Tu clave de API de OpenWeatherMap
+  const API_KEY = "a1e499dae2e276e67f92c10856b18ac3"; 
 
   const fetchWeatherData = async () => {
     if (!location.lat || !location.lon) {

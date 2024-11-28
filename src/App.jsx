@@ -16,20 +16,20 @@ const PrivateRoute = ({ children }) => {
 };
 
 const App = () => {
-  const [searchQuery, setSearchQuery] = useState("");  // Agregar el estado de búsqueda
+  const [searchQuery, setSearchQuery] = useState("");  
 
   return (
     <AuthContextProvider>
       <Router>
-        <Header searchQuery={searchQuery} setSearchQuery={setSearchQuery} /> {/* Pasar las props de búsqueda al Header */}
+        <Header searchQuery={searchQuery} setSearchQuery={setSearchQuery} /> 
         <Routes>
           <Route
             path="/"
             element={
               <div>
                 <Image />
-                <InfoSection searchQuery={searchQuery} /> {/* Pasar la búsqueda al InfoSection */}
-                <PanelTypesSection searchQuery={searchQuery} /> {/* Pasar la búsqueda al PanelTypesSection */}
+                <InfoSection searchQuery={searchQuery} /> 
+                <PanelTypesSection searchQuery={searchQuery} /> 
                 <Footer />
               </div>
             }

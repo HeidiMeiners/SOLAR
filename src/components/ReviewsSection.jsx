@@ -2,13 +2,12 @@ import React, { useState, useContext, useEffect } from "react";
 import { AuthContext } from "../context/AuthContext";
 
 const ReviewsSection = () => {
-  const { user } = useContext(AuthContext);  // Obtener el usuario desde el contexto
-  const [reviews, setReviews] = useState([]);  // Estado para almacenar reseñas
+  const { user } = useContext(AuthContext);  
+  const [reviews, setReviews] = useState([]); 
 
   const [newReview, setNewReview] = useState("");
   const [newRating, setNewRating] = useState(5);
 
-  // Cargar reseñas desde localStorage al montar el componente
   useEffect(() => {
     const savedReviews = localStorage.getItem("reviews");
     if (savedReviews) {
@@ -16,23 +15,19 @@ const ReviewsSection = () => {
     }
   }, []);
 
-  // Función para agregar una nueva reseña
   const handleAddReview = () => {
     if (newReview.trim()) {
-      // Usamos el nombre de usuario (username) o "Anonymous" si no está autenticado
       const newReviewData = {
         username: user?.username || "Anonymous",
         review: newReview,
         rating: newRating,
-        date: new Date().toISOString(),  // Fecha de la reseña
+        date: new Date().toISOString(), 
       };
 
-      // Actualizamos el estado de las reseñas
       const updatedReviews = [...reviews, newReviewData];
       setReviews(updatedReviews);
-      localStorage.setItem("reviews", JSON.stringify(updatedReviews)); // Guardar en localStorage
+      localStorage.setItem("reviews", JSON.stringify(updatedReviews)); 
 
-      // Limpiar los campos de la nueva reseña
       setNewReview("");
       setNewRating(5);
     }

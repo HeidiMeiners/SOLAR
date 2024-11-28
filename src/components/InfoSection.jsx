@@ -60,7 +60,7 @@ const InfoSection = ({ searchQuery }) => {
       <h2 className="text-center mb-4">About Solar Panels</h2>
       <div className="row">
         {filteredInfoCards.map((card, index) => (
-          <div key={index} className="col-md-4">
+          <div key={index} className="col-md-4 mb-4"> 
             <div
               className="p-3 rounded"
               style={{ backgroundColor: "#d4edda", border: "1px solid #c3e6cb" }}
